@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="aws-java-sdk-1.11.781">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../实训/01数据怎么存WINDOWS/aws-java-sdk-1.11.781/lib/aws-java-sdk-1.11.781.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
