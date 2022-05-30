@@ -25,7 +25,7 @@ public class FileSynchronizer {
     private final long MAX_SIZE = SyncParameters.PART_SIZE;
     private long partSize = MAX_SIZE;
 
-    private static final Configurations conf = new Configurations();
+    private static Configurations conf = new Configurations();
 
     private static final BasicAWSCredentials credentials = new BasicAWSCredentials(conf.accessKey, conf.secretKey);
     private static final ClientConfiguration ccfg = new ClientConfiguration().withUseExpectContinue(false);
@@ -175,6 +175,26 @@ public class FileSynchronizer {
 
 
     public static void main(String[] args) {
+        System.out.println(args.length);
+        if(args.length == 2) {
+            //if(args[0].matches("(/([a-zA-Z0-9][a-zA-Z0-9_\\-]{0,255}/)*([a-zA-Z0-9][a-zA-Z0-9_\\-]{0,255})|/)")
+            //&& args[1].matches("^[a-zA-Z0-9](?:[a-zA-Z0-9 ._-]*[a-zA-Z0-9])?\\\\.[a-zA-Z0-9_-]+$")) {
+                conf.workDirectory = args[0];
+                conf.lastTransferLogDir = args[1];
+            //}
+            //else {
+            //    System.out.println("illegal parameters.");
+            //    System.exit(-1);
+            //}
+
+        }
+        else if(args.length == 0){
+            System.out.println("using default config.");
+        }
+        else {
+            System.out.println("error! please check parameters");
+            System.exit(-1);
+        }
         //SignalHandlerImpl signalHandlerImpl = new SignalHandlerImpl(eTag,pos,contentLength,conf);
         //signalHandlerImpl.registerSignal("TERM");    // 15: 正常终止后台
         //signalHandlerImpl.registerSignal("INT");    // 2: 正常终止前台 CTRL+C
