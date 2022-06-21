@@ -46,11 +46,12 @@ public class DirWatchService {
 
                     Path filename = watchEventPath.context();
 
-                    System.out.println("变化对象是 "+filename);
+
                     Path fileDir = (Path) key.watchable();
                     Path fullDir = fileDir.resolve(watchEventPath.context());
                     File nf = new File(String.valueOf(fileDir));
-                    if(nf.isDirectory()) continue;
+                    System.out.println("变化对象是 " + filename);
+                    //if(nf.isDirectory()) continue;
                     System.out.println("[FileWatchService] - filename: " + fullDir + " ; EVENT: " + kind.name().split("_")[1]);
 
                     if (kind == StandardWatchEventKinds.OVERFLOW) {

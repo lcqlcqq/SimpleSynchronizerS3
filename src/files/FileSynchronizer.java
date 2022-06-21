@@ -116,7 +116,7 @@ public class FileSynchronizer {
                             PrintService.printProgress(start,i,contentLength/MAX_SIZE + 1,keyName);
                         else
                             PrintService.printResume(start,i,contentLength/MAX_SIZE + 1,keyName);
-                        System.out.println(".");
+
                         s3is = o.getObjectContent();
                         raf.seek(pos);
                         byte[] read_buf = new byte[1 << 10];
@@ -126,6 +126,7 @@ public class FileSynchronizer {
                         }
                         pos += partSize + 1;
                     }
+                    System.out.println(".");
                     //System.out.print("\ndownload completed.");
                     //System.out.format("save %s to %s.\n", keyName, dir);
                 } catch (Exception e) {
@@ -175,7 +176,7 @@ public class FileSynchronizer {
 
 
     public static void main(String[] args) {
-        System.out.println(args.length);
+        //System.out.println(args.length);
         if(args.length == 2) {
             //if(args[0].matches("(/([a-zA-Z0-9][a-zA-Z0-9_\\-]{0,255}/)*([a-zA-Z0-9][a-zA-Z0-9_\\-]{0,255})|/)")
             //&& args[1].matches("^[a-zA-Z0-9](?:[a-zA-Z0-9 ._-]*[a-zA-Z0-9])?\\\\.[a-zA-Z0-9_-]+$")) {
@@ -192,7 +193,7 @@ public class FileSynchronizer {
             System.out.println("using default config.");
         }
         else {
-            System.out.println("error! please check parameters");
+            System.out.println("error! please check parameters.");
             System.exit(-1);
         }
         //SignalHandlerImpl signalHandlerImpl = new SignalHandlerImpl(eTag,pos,contentLength,conf);
